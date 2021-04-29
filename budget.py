@@ -1,11 +1,12 @@
 class Category:
-    ledger = []
-    pass
+    
+    def __init__(self, name):
+        self.name = name
+        self.ledger = []
 
     def deposit(self, amount, description=""):
-        obj = {"amount": amount, "description": description}
-        self.ledger.append(obj)
-        pass
+        deposit = {"amount": amount, "description": description}
+        self.ledger.append(deposit)
 
     def withdraw(self, amount, description=""):
         isEnough = self.check_funds(amount)
