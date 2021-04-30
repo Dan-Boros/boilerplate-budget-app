@@ -31,7 +31,22 @@ class Category:
         return amount <= self.get_balance()
     
     def __repr__(self):
-        return ""
+        # *************Food*************
+        # initial deposit        1000.00
+        # groceries               -10.15
+        # restaurant and more foo -15.89
+        # Transfer to Clothing    -50.00
+        # Total: 923.96
+        title = '{:*^30}'.format(self.name)
+        
+        total = f'Total: {self.get_balance()}'
+        
+        itemsTemplate = "{0: <23}{1:7.2f}"
+        items = [total.format(item['description'], item['amount']) for item in self.ledger]
+        
+        lines = [title, *items, total]
+
+        return "\n".join(lines)
 
 
 def create_spend_chart(categories):
